@@ -1,9 +1,18 @@
 /* default.css */
 .jumbotron {
-    background: #fff;
+    background: #ffffff;
     margin-bottom: 0;
 }
-.menu_header {
+.blockquote-nopadding {
+    padding: 0 20px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+.menu_header{
     padding: 0 20px;
     margin-bottom: 50px;
+}
+.active > a, .a-active {
+    background: #1f64d3 !important;
+    color: #ffffff !important;
 }

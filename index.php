@@ -25,18 +25,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">EDU</a>
+            <a class="navbar-brand <?php if(!$page) echo "a-active"; ?>" href="/">EDU</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav dropdown">
-                <li class="dropdown active">
+                <li class="dropdown <?php if($page == "client") echo "active"; ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Web Client <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/client/droppable">drag &amp; drop</a></li>
+                        <li><a href="/client/droppable">Drag &amp; Drop</a></li>
                         <li><a href="/client/sortable">Sortable</a></li>
                         <li><a href="/client/selectable">Selectable</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="/client/svg">SVG</a></li>
                         <li><a href="/client/videocontrol">Video Control</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="/client/localstorage">Localstorage</a></li>
                         <li><a href="/client/indexeddb">IndexedDB</a></li>
                         <li role="separator" class="divider"></li>
