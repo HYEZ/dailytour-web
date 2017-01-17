@@ -1,0 +1,9 @@
+/* default.css */
+.jumbotron {
+    background: #fff;
+    margin-bottom: 0;
+}
+.menu_header {
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
