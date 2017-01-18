@@ -38,8 +38,7 @@ function setMapLocatedColor(){
 		$(this).css({ "fill" : "#C8C8C8" });
 	});
 
-	// 텍스트 마우스 오버시 색 변경
-	$("body").on("mouseenter", "text", function(){
+    $("body").on("mouseenter", "text", function(){
 		var id = $(this).find("tspan:last-child").text();
 		$("#"+id).css({ "fill" : "#FF9900" });
 	});
@@ -74,16 +73,19 @@ function alertLocatedName(element){
 /* IndexedDB */
 
 function initIndexedDB(){
-    var request = indexedDB.open("indexedDB_library");
+    var request = indexedDB.open("librarys");
 
     request.onupgradeneeded = function() {
         var db = request.result;
-        var store = db.createObjectStore("member", {keyPath: "_id"});
-        var emailIndex = store.createIndex("by_email", "email", {unique: true});
-        var nameIndex = store.createIndex("by_name", "name");
+        var objectStore = db.createObjectStore("member", {keyPath: "_id", autoIncrement:true});
+        objectStore.createIndex("email", "email", {unique: true});
+        objectStore.createIndex("name", "name");
+        objectStore.createIndex("pw", "pw");
+        objectStore.createIndex("file", "file");
+        objectStore.createIndex("checked", "checked");
 
-        store.put({email: "a@a.a", pw: "1234", name: "Fred", file: "", checked: true, _id: 1});
-        store.put({email: "asdf@ac.aa", pw: "a1234", name: "Asdf", file: "", checked: false, _id: 2});
+        objectStore.put({email: "a@a.a", pw: "1234", name: "Fred", file: "", checked: true, _id: 1});
+        objectStore.put({email: "asdf@ac.aa", pw: "a1234", name: "Asdf", file: "", checked: false, _id: 2});
     };
 
     request.onsuccess = function() {
@@ -109,7 +111,7 @@ function setindexedDB(db, type, key, value){
    
     switch(type){
         case "insert":
-            objectStore.put({email: value[0], pw: value[1], name: value[2], file: "", checked: value[3], _id: 3});
+            objectStore.put({email: value[0], pw: value[1], name: value[2], file: "", checked: value[3]});
             break;
         case "delete":
             objectStore.delete(key);
@@ -133,8 +135,7 @@ function getAllIndexedDB(db){
             cursor.continue();
         } else {
             console.log("\n");
-        }
-        
+        }       
     };
 }
 
