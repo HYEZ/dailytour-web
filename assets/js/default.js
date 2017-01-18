@@ -4,7 +4,7 @@ function init(){
     LoadSvg();
     getJsonData();
     setMapLocatedColor();
-    initTestIndexedDB();
+    initIndexedDB();
 }
 
 
@@ -73,59 +73,49 @@ function alertLocatedName(element){
 
 /* IndexedDB */
 
-function initTestIndexedDB(){
-    var request = indexedDB.open("library"); //db name
-    const customerData = [
-        { id: "01", name: "Gopal K Varma", age: 35, email: "contact@tutorialspoint.com" },
-        { id: "02", name: "Prasad", age: 24, email: "prasad@tutorialspoint.com" }
-    ];
-    const customerData2 = [
-        {title: "4A44-44-asdfsadfasdf4444", name: "authAor", isbn: "bilAl@comdpany.com" },
-        {title: "4A44-44-sadfsadfasdf4444", name: "authAor", isbn: "bilAl@codmpany.com" }
-    ];
+function initIndexedDB(){
+    var request = indexedDB.open("indexedDB_library");
+
+    request.onupgradeneeded = function() {
+        var db = request.result;
+        var store = db.createObjectStore("member", {keyPath: "_id"});
+        var emailIndex = store.createIndex("by_email", "email", {unique: true});
+        var nameIndex = store.createIndex("by_name", "name");
+
+        store.put({email: "a@a.a", pw: "1234", name: "Fred", file: "", checked: true, _id: 1});
+        store.put({email: "asdf@ac.aa", pw: "a1234", name: "Asdf", file: "", checked: false, _id: 2});
+    };
+
     request.onsuccess = function() {
         db = request.result;
-        var transaction = db.transaction("books", "readwrite"); // colum
-
-        var objectStore = transaction.objectStore("books");
-
-        objectStore.put({title: "4A44-44-sadfasdf4444", name: "authAor", isbn: "bilAl@company.com" });
-
-        transaction.oncomplete = function() {
-          // All requests have succeeded and the transaction has committed.
-        };
-        var index = objectStore.index("by_title");
-
-        var req = index.get("Quarry Memories");
-        req.onsuccess = function(){
-    //        alert(req.result.isbn);
-        }
-        for(i in customerData2) {
-            objectStore.put(customerData2[i]);
-        }
-        
-        deleteIndexedDB(db, "donna@home.org");
         getAllIndexedDB(db);
-        
         initTriggerindexedDB(db);
     };
 }
 
 function initTriggerindexedDB(db){
     $("body").on("click", "#indexedOk", function(){
-        setindexedDB(db, "insert");
+        var value = [];
+        value.push($(this).parent("div").children("div").children("#indexed_email").val());
+        value.push($(this).parent("div").children("div").children("#indexed_pw").val());
+        value.push($(this).parent("div").children("div").children("#indexed_name").val());
+        value.push($(this).parent("div").children("div").children("#indexed_check").is(":checked"));
+        setindexedDB(db, "insert", 0, value);
     });
 }
 
-function setindexedDB(db, type, index){
-    var objectStore = db.transaction("books","readwrite").objectStore("books");
-    
+function setindexedDB(db, type, key, value){
+    var objectStore = db.transaction("member","readwrite").objectStore("member");
+   
     switch(type){
         case "insert":
-            objectStore.put({title: "asdfa", name: "a", isbn: "ab" });
+            objectStore.put({email: value[0], pw: value[1], name: value[2], file: "", checked: value[3], _id: 3});
             break;
         case "delete":
-            objectStore.delete(index);
+            objectStore.delete(key);
+            break;
+        case "update":
+            objectStore.put({email: value[0], pw: value[1], name: value[2], file: "", checked: value[3], _id: key});
             break;
     }
     
@@ -133,16 +123,16 @@ function setindexedDB(db, type, index){
 }
 
 function getAllIndexedDB(db){
-    var objectStore = db.transaction("books").objectStore("books");
+    var objectStore = db.transaction("member").objectStore("member");
+    
     objectStore.openCursor().onsuccess = function(event) {
         var cursor = event.target.result;
 
         if (cursor) {
-            console.log(cursor.key);
-//            alert("Name for id " + cursor.key + " is " + cursor.value.name + ", Age: " + cursor.value.age + ", Email: " + cursor.value.email);
+            console.log(cursor.key + " : " + cursor.value.email + ", pw: " + cursor.value.pw + ", Email: " + cursor.value.name + ", checked: " + cursor.value.checked);
             cursor.continue();
         } else {
-//            alert("No more entries!");
+            console.log("\n");
         }
         
     };
