@@ -5,3 +5,10 @@
 .main h1 {
     margin-bottom: 30px;
 }
+.input-member-form {
+    width: 300px;
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 7px;
+}
