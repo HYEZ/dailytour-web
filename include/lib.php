@@ -7,8 +7,9 @@ header("Content-Type: text/html; charset=UTF-8");
 session_start();
 
 /* DB */
+
 $option = array(PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ);
-$db = new PDO("mysql:host=localhost;dbname=hyez_edu;charset=utf8", "root", "root", $option);
+$db = new PDO("mysql:host=localhost;dbname=dailytour;charset=utf8", "root", "root", $option);
 $db -> exec("SET CHARACTER SET utf8");
 
 
@@ -23,6 +24,8 @@ if($page){
 	switch($page){
 		case "client": $subid = "client"; break;
         case "server": $subid = "server"; break;
+        case "model": $subid = "model"; break;
+        case "view": $subid = "view"; break;
 	}
 }
 
@@ -49,5 +52,14 @@ function alertMove($msg,$url){
 
 function hit($str,$key){
 	return str_ireplace($key,"<span style='background:#ffcc66; font-weight:bold'>{$key}</span>",$str);
+}
+
+
+function cutStr($str, $length){
+	if(mb_strlen($str,"utf-8") > $length){
+		return mb_substr($str,0,$length,"utf-8")."..";
+	} else {
+		return $str;
+	}
 }
 

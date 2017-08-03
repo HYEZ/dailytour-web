@@ -5,7 +5,11 @@
 
 <!-- Content -->
 <div class="container">
-    <div class="row">
-        content
+    <div class="row slides">
+    	
     </div>
 </div>
+
+<script>
+
+</script>

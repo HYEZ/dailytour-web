@@ -1,150 +1,125 @@
-var json = null;
-
-function init(){
-    LoadSvg();
-    getJsonData();
-    setMapLocatedColor();
-    initIndexedDB();
-}
-
-
-/* svg */
-
-function LoadSvg(){
-	$("#svg").load("/svg/map.svg", function(data){
-		$(this).html(data);
-	});
-}
-
-function getJsonData(){
-	$.getJSON("/json/description.json", function(data){
-		if(data){
-			json = data.WardOffice;
-            
-			$.each(json, function(key, val){
-				val.files = [];
-			});
-		}
-	});
-	return false;
-}
-
-function setMapLocatedColor(){
-	$("body").on("mouseenter", "path", function(){
-		$(this).css({ "fill" : "#FF9900" });
-	});
-
-	$("body").on("mouseleave", "path", function(){
-		$(this).css({ "fill" : "#C8C8C8" });
-	});
-
-    $("body").on("mouseenter", "text", function(){
-		var id = $(this).find("tspan:last-child").text();
-		$("#"+id).css({ "fill" : "#FF9900" });
-	});
-
-	$("body").on("mouseleave", "text", function(){
-		var id = $(this).find("tspan:last-child").text();
-		$("#"+id).css({ "fill" : "#C8C8C8" });
-	});
-
-	$("body").on("click", "path", function(){
-        alertLocatedName(this);
-	});
-}
-
-function alertLocatedName(element){
-    var self = null;
-    var id = $(element).attr("id");
-
-	$.each(json, function(i, val){
-		if(val.name_en == id){
-			self = val;
-			key = i;
-			return false;
-		}
-	});
-
-    alert(self.name_ko);
-}
-
-
-
-/* IndexedDB */
-
-function initIndexedDB(){
-    var request = indexedDB.open("librarys");
-
-    request.onupgradeneeded = function() {
-        var db = request.result;
-        var objectStore = db.createObjectStore("member", {keyPath: "_id", autoIncrement:true});
-        objectStore.createIndex("email", "email", {unique: true});
-        objectStore.createIndex("name", "name");
-        objectStore.createIndex("pw", "pw");
-        objectStore.createIndex("file", "file");
-        objectStore.createIndex("checked", "checked");
-
-        objectStore.put({email: "a@a.a", pw: "1234", name: "Fred", file: "", checked: true, _id: 1});
-        objectStore.put({email: "asdf@ac.aa", pw: "a1234", name: "Asdf", file: "", checked: false, _id: 2});
-    };
-
-    request.onsuccess = function() {
-        db = request.result;
-        getAllIndexedDB(db);
-        initTriggerindexedDB(db);
-    };
-}
-
-function initTriggerindexedDB(db){
-    $("body").on("click", "#indexedOk", function(){
-        var value = [];
-        value.push($(this).parent("div").children("div").children("#indexed_email").val());
-        value.push($(this).parent("div").children("div").children("#indexed_pw").val());
-        value.push($(this).parent("div").children("div").children("#indexed_name").val());
-        value.push($(this).parent("div").children("div").children("#indexed_check").is(":checked"));
-        setindexedDB(db, "insert", 0, value);
-    });
-}
-
-function setindexedDB(db, type, key, value){
-    var objectStore = db.transaction("member","readwrite").objectStore("member");
-   
-    switch(type){
-        case "insert":
-            objectStore.put({email: value[0], pw: value[1], name: value[2], file: "", checked: value[3]});
-            break;
-        case "delete":
-            objectStore.delete(key);
-            break;
-        case "update":
-            objectStore.put({email: value[0], pw: value[1], name: value[2], file: "", checked: value[3], _id: key});
-            break;
-    }
-    
-    getAllIndexedDB(db);
-}
-
-function getAllIndexedDB(db){
-    var objectStore = db.transaction("member").objectStore("member");
-    
-    objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-            console.log(cursor.key + " : " + cursor.value.email + ", pw: " + cursor.value.pw + ", Email: " + cursor.value.name + ", checked: " + cursor.value.checked);
-            cursor.continue();
-        } else {
-            console.log("\n");
-        }       
-    };
-}
-
-
-/* init */
-
 $(function(){
-	init();
+    datepick();
 });
 
+$(".btn-wrap .btn").on("click", function(){
+    var id = $(this).attr("data-popup");
+    onShowPopup(id);
+});
 
+$(".popup-close").on("click", function(){
+    var id = "#" + $(this).parents(".popup").attr("id");
+    onHidePopup(id);
+});
+
+function onShowPopup ( id ) {
+    $(".popup-background").fadeIn();
+    $(id).fadeIn();
+}
+
+function onHidePopup ( id ) {
+    $(".popup-background").fadeOut();
+    $(id).fadeOut();
+}
+
+$(".editor-tab div").on("click", function(){
+    $(this).addClass("this").siblings().removeClass("this");
+});
+
+function datepick() {
+    $('#date1').datepicker({
+        dateFormat:"yy-mm-dd",
+        // minDate:0,
+        onClose:function(date){
+            if(date){
+                $('#date2').datepicker("option","minDate",date);
+                // totalPrice();
+            }
+        }
+    });
+    $('#date2').datepicker({
+        dateFormat:"yy-mm-dd",
+        // minDate:0,
+        onClose:function(date){
+            if(date){
+                $('#date1').datepicker("option","maxDate",date);
+                // totalPrice();
+            }
+        }
+    }); 
+ 
+}
+
+
+
+function initMap(lat, lng) {
+    if(lat && lng) {
+        var uluru = {lat: lat, lng: lng};
+    } else {
+        var uluru = {lat: 37.5463899, lng: 126.9647134};
+    }
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: uluru
+    });
+    var marker1 = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+
+    marker1.addListener('click', function() {
+        map.setZoom(18);
+        $("#lat").val(uluru.lat);
+        $("#lng").val(uluru.lng);
+        $("#lat_view").val("위도 : " + uluru.lat);
+        $("#lng_view").val("경도 : " + uluru.lng);
+        map.setCenter(marker1.getPosition());
+        $(".result").show();
+    });
+
+}
+
+$("#keyword_search").click(function() {
+    var place = $("#keyword").val();
+    $.ajax({
+        url: "/page/model/search_place.php",
+        type: "post",
+        data: {
+            place: place
+        },
+        success: function(data) {
+            // console.log(data);
+            var t = JSON.parse(data);
+            // console.log(t);
+            initMap(t.results[0].geometry.location.lat, t.results[0].geometry.location.lng);
+            // console.log(t.results[0].geometry.location.lng);
+        },  error:function(request,status,error){
+            // console.log(request);
+          }
+
+    });
+
+});
+ 
+$("#photo_search").click(function() {
+    var file_data = $('#photo').prop('files')[0];   
+    var form_data = new FormData();                  
+    form_data.append('file', file_data);
+    $.ajax({
+        url: '/page/model/vision.php',
+        dataType: 'text',  
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                         
+        type: 'post',
+        success: function(data){
+            // console.log(data);
+            var t = JSON.parse(data);
+            console.log(t.responses[0].landmarkAnnotations[0].locations[0].latLng);
+            initMap(t.responses[0].landmarkAnnotations[0].locations[0].latLng.latitude, t.responses[0].landmarkAnnotations[0].locations[0].latLng.longitude);
+
+        }
+     });
+});
 

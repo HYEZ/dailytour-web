@@ -16,3 +16,7 @@
     background: #1f64d3 !important;
     color: #ffffff !important;
 }
+ul, li {
+	list-style: none;
+	padding: 0;
+}

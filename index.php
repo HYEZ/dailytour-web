@@ -5,62 +5,48 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>HYEZ - 강의</title>
+	<title>DailyTour</title>
     
     <!-- Bootstrap CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="/css/agency.css" rel="stylesheet">
     <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/jquery/jquery-ui-1.11.4/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/assets/jquery/jquery-ui-1.11.4/jquery-ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="/assets/jquery/jquery-ui-1.11.4/jquery-ui.structure.css">
     <link href="/assets/css/default.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
+
 </head>
 <body>
 
+    <?php 
+    if(isset($_SESSION['user_id'])) {
+    ?>
     <!-- menu -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand <?php if(!$page) echo "a-active"; ?>" href="/">EDU</a>
+        <div class="container relative-box">
+            <div>
+                <div class="left-align"> 
+                    <a class="navbar-brand" href="/">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="center-align">
+                    <a class="navbar-brand2" href="/">Daily Tour</a>
+                </div>
+                <div class="right-align">
+                    <a class="navbar-brand" href="/page/model/logout.php">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav dropdown">
-                <li class="dropdown <?php if($page == "client") echo "active"; ?>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Web Client <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/client/droppable">Drag &amp; Drop</a></li>
-                        <li><a href="/client/sortable">Sortable</a></li>
-                        <li><a href="/client/selectable">Selectable</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/client/svg">SVG</a></li>
-                        <li><a href="/client/videocontrol">Video Control</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/client/localstorage">Localstorage</a></li>
-                        <li><a href="/client/indexeddb">IndexedDB</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">drop</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PHP <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">drag &amp; drop</a></li>
-                        <li><a href="#">Sortable</a></li>
-                        <li><a href="#">Selectable</a></li>
-                        <li><a href="#">Localstorage</a></li>
-                        <li><a href="#">IndexedDB</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">drop</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Server</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
     </nav>
     
     <!-- header -->
@@ -81,11 +67,28 @@
             ?>
         </div>
     </section>
+    <?php
+    } else {
+        include "{$_SERVER['DOCUMENT_ROOT']}/page/view/login.php";
+    }
+    ?>
+
     
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="copyright">Copyright &copy; 데일리투어 2017</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- script -->
     <script src="/assets/jquery/jquery-1.12.3.min.js"></script>
-    <script src="/assets/jquery/jquery-ui-1.11.4"></script>
+    <script src="/assets/jquery/jquery-ui-1.11.4/jquery-ui.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    
     <script src="/assets/js/default.js"></script>
 </body>
 </html>

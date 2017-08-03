@@ -1,3 +1,6 @@
+a {
+	color: #333;
+}
 .svg-content {
     text-align: center;
     margin-top: -70px;
@@ -12,3 +15,323 @@
     padding: 20px;
     border-radius: 7px;
 }
+.file-drop-zone {
+	width: 100%;
+	height: 50px;
+	background: #eee;
+	border-radius: 5px;
+	border:1px solid #ddd;
+	box-sizing: border-box;
+	padding: 7px 10px;
+	float: left;
+}
+#drop.hover {
+	background: #ccc;
+}
+.slide {
+	width: 2000px;
+	padding: 0;
+}
+.slide > li {
+	list-style: none;
+	float: left;
+	width: 500px;
+	padding: 0;
+	height: 300px;
+}
+.slide > li > img {
+	width: 100%;
+	height: 100%;
+}
+.slide_box {
+	width: 500px;
+	height: 300px;
+	overflow: hidden;
+}
+.slide_btn {
+	float: left;
+	margin-top: 30px;
+}
+.slide_btn li {
+	float: left;
+	margin: 3px;
+}
+
+.animation_box {
+	width: 50%;
+	float: left;
+}
+.slide_drag {
+	width: 50%;
+	height: 150px;
+	padding: 10px 10px 10px 0;
+	box-sizing: border-box;
+}
+.slide_drag img {
+	width: 100%;
+	height: 100%;
+	border: 4px dotted #ffcc66;
+	box-sizing: border-box;
+}
+
+/* drop box */
+#drop { 
+	width: 100%; 
+	height: 150px; 
+	margin: 0 auto; 
+	line-height: 150px;
+	border: 1px solid #ccc; 
+	text-align: center; 
+}
+#drop.hover { 
+	background:rgba(231, 76, 60, 0.1); 
+	border: 1px solid #ff9900; 
+}
+#drop:before { 
+	content:"이곳에 이미지(JPG, PNG) / 동영상(MP4) 파일을 드롭해주세요."; 
+}
+#drop.hover:before { 
+	content:"이곳에 파일을 드롭해주세요."; 
+	color:#ff9900; 
+	font-weight:bold; 
+}
+.drop_list {
+	width: 100%; 
+	min-height: 50px; 
+	margin: 0 auto; 
+	line-height: 50px;
+	border: 1px solid #ccc; 
+	border-top: none;
+	margin-bottom: 15px; 
+	text-align: left; 
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+.drop_list img {
+	margin: 0 5px;
+}
+.drop-button {
+	width: 100%;
+}
+
+
+.popup-background {display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); z-index:999;}
+.popup {display:none; width:400px; padding:50px 30px 50px 30px; position:fixed; top:40%; left:50%; transform:translate(-50%, -50%); background:#fff; border-radius:4px; z-index:1001;}
+
+#imageBox {width:100%; height:140px; background:#ddd; border-radius:4px; border:2px dashed #ccc;}
+#filelist {margin-bottom: 0px;}
+
+.form-group {
+	margin-bottom: 0px;
+}
+.form-control {
+	margin-bottom: 15px;
+}
+.form-date {
+	width: 47%;
+	float: left;
+}
+
+.left {
+	width: 70%;
+	float: left;
+	height: 550px;
+	background: #ccc;
+}
+.right {
+	width: 30%;
+	float: left;
+}
+.place_list {
+	width: 100%;
+	float: left;
+	min-height: 600px;
+	background: #eee;
+
+}
+.btn_box {
+	width: 100%;
+	float: left;
+	text-align: right;
+}
+
+.place_list .btn {
+	width: 20%;
+	float: left;
+}
+.result {
+	display: none;
+}
+.pup-up {
+	display: none;
+}
+
+
+.jumbotron {
+	background: #eee;
+}
+
+body {
+	background: #eee !important;
+}
+.main-container {
+	padding: 50px 0 20px 0;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+	background: #];
+}
+.left-align {
+	float: left;
+	position: absolute;
+	left: 0;
+}
+.relative-box {
+	position: relative;
+}
+.relative-box > div {
+	width: 100%;
+	float: left;
+	height: 50px;
+	position: absolute;
+}
+.center-align {
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+.right-align {
+	float: right;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+.navbar-brand2 {
+	font-size: 18px;
+	line-height: 50px;
+	color: #fff;
+}
+.navbar-brand2:hover {
+	text-decoration: none;
+}
+.navbar-brand {
+	margin-left: 0 !important;
+	padding-left: 0;
+	padding-right: 0;
+}
+.login-container {
+	padding-top: 150px;
+}
+.login-header {
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 40px;
+}
+a {
+	color: #0089d8;
+}
+a:hover {
+	color: #0089d8;
+}
+.login-sub-panel {
+	padding: 15px 5px;
+	text-align: center;
+}
+.login-sub-panel p {
+	margin: 0;
+}
+
+footer {
+	margin-top: 130px;
+	border-top: 1px dashed #ccc;
+}
+.navbar-inverse {
+	background: #333 !important;
+}
+.main {
+	position: relative;
+}
+.add-btn {
+	width: 70px;
+	height: 70px;
+	border-radius: 100px;
+	font-size: 30px;
+	float: right;
+}
+.add-btn-wrap {
+	margin-top: 0
+}
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+	background: rgba(0, 137, 216, 0.85);
+}
+#portfolio .portfolio-item .portfolio-caption p {
+	font-style: inherit !important;
+}
+.sub-title {
+	width: 100%;
+	float: left;
+	margin-bottom: 30px;
+	font-size: 26px;
+}
+.padding-box {
+	padding: 0 40px;
+}
+.place_list li.place-item {
+	width: 100%;
+	height: 70px;
+	background: #fff;
+	margin: 3px 0;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+.place_list li.place-item:hover {
+	background:  rgba(0, 137, 216, 0.1);
+	transition: all 0.2s;
+}
+.place_list_icon {
+	float: left;
+	font-size: 20px;
+	padding: 0 20px;
+	line-height: 70px;
+}
+.place_list_text {
+	float: left;
+}
+
+.place_list_text h5 {
+	margin: 15px 0 0 0;
+	font-size: 14px;
+	color: #0089d8;
+}
+.place_list_text p {
+	margin: 5px 0 0 0;
+	font-size: 13px;
+}
+.search-text {
+	border-bottom-right-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	width: 80%;
+	float: left;
+}
+.search-btn {
+	border-bottom-left-radius: 0 !important;
+	border-top-left-radius: 0 !important;
+}
+.result textarea {
+	width: 100%;
+	float: left;
+	height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
