@@ -45,6 +45,15 @@
 	                            <div class="form-group">
 	                                <input class="form-control" placeholder="Name" name="name" type="text" value="">
 	                            </div>
+	                            <div class="form-group">
+	                                <input class="form-control" placeholder="Nickname" name="nickname" type="text" autofocus>
+	                            </div>
+	                            <div class="form-group">
+	                                <input class="form-control" placeholder="Birthday" name="birth" type="date" autofocus>
+	                            </div>
+	                            <div class="form-group">
+	                                <input class="form-control" placeholder="phone" name="phone" type="tel" autofocus>
+	                            </div>
 	                            <!-- Change this to a button or input when using this as a form -->
 	                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Join">
 	                        </fieldset>

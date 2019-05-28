@@ -26,9 +26,9 @@ if(!in_array($file_type,$file_arr)){
 } else {
 	move_uploaded_file($file_tmp, $file_rel);
 	
-	$ps = $db->prepare("insert into directory (user_id, title, image, first_date, end_date) values (:user_id, :title, :image, :first_date, :end_date)");
+	$ps = $db->prepare("insert into travels (user_idx, title, image, first_date, end_date) values (:user_idx, :title, :image, :first_date, :end_date)");
 
-	$ps->bindValue(":user_id", $_SESSION['user_id']);
+	$ps->bindValue(":user_idx", $_SESSION['user_idx']);
 	$ps->bindValue(":title", $_POST['title']);
 	$ps->bindValue(":image", $file_name);
 	$ps->bindValue(":first_date", $_POST['from']);

@@ -5,10 +5,10 @@
             <div class="container">
                 <div class="row main-container">
                     <?php
-                    $query = $db->query("select * from directory where user_id='$_SESSION[user_id]' order by _id desc");
+                    $query = $db->query("select * from travels where user_idx='$_SESSION[user_idx]' order by idx desc");
                     for($i = 1;$rs = $query -> fetch(); $i++){
                     ?>
-                    <div class="col-md-4 col-sm-6 portfolio-item" onclick="location.href='/view/directory/<?php echo $rs->_id; ?>'">
+                    <div class="col-md-4 col-sm-6 portfolio-item" onclick="location.href='/view/directory/<?php echo $rs->idx; ?>'">
                         <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">

@@ -12,7 +12,7 @@
 // $ps->execute();
 
 
-$db->query("insert into detail set directory_id='{$sidx}', title='$_POST[title]', content='$_POST[content]', lat='$_POST[lat]', lng='$_POST[lng]', image=''");
+$db->query("insert into route set travels_idx='{$sidx}', title='$_POST[title]', content='$_POST[content]'");
 move("/view/directory/".$sidx);
 
 

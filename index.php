@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>DailyTour</title>
+	<title>혜정트래블러</title>
     
     <!-- Bootstrap CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,10 @@
 <body>
 
     <?php 
-    if(isset($_SESSION['user_id'])) {
+    // echo $_SESSION['user_idx'];
+    if(isset($_SESSION['user_idx'])) {
+        $query = $db->query("select * from user where idx='$_SESSION[user_idx]'");
+        $rs = $query->fetch();
     ?>
     <!-- menu -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -44,24 +47,28 @@
                     </a>
                 </div>
                 <div class="center-align">
-                    <a class="navbar-brand2" href="/">Daily Tour</a>
+                    <a class="navbar-brand2" href="/">혜정트래블러</a>
                 </div>
                 <div class="right-align">
                     <a class="navbar-brand member-toggle">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div class="member_box_wrap" id="member_box">
+                <div class="member_box_wrap" id="member_box" style="height: 180px">
                     <div class="gb_kb2"></div>
                     <div class="member_box">
                         <div class="member_box_top">
-                            <div class="member_name_img"><?php echo $_SESSION['user_name']; ?></div>
+                            <div class="member_name_img"><?php  echo $_SESSION['user_name']; ?></div>
                             <div class="member_profile">
                                 <ul>
                                     <li style="font-weight: bold;"><?php echo $_SESSION['user_name']; ?></li>
                                     <li><?php echo $_SESSION['user_id']; ?></li>
+                                    <li><?php echo $rs->nickname; ?></li>
+                                    <li><?php echo $rs->birth; ?></li>
+                                    <li><?php echo $rs->phone; ?></li>
                                 </ul>
                                 <input type="button" value="로그아웃" class="logout_btn" onclick="location.href='/page/model/logout.php';">
+                                <input type="button" value="회원탈퇴" class="logout_btn" onclick="location.href='/page/model/user_del.php';">
                             </div>
                         </div>
                     </div>
@@ -99,7 +106,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <span class="copyright">Copyright &copy; 데일리투어 2017</span>
+                    <span class="copyright">Copyright &copy; 혜정트래블러 2019</span>
                 </div>
             </div>
         </div>

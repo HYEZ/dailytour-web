@@ -1,10 +1,10 @@
 <?php 
-$query = $db->query("select * from directory where _id='$sidx'");
+$query = $db->query("select * from travels where idx='$sidx'");
 $rs = $query->fetch();
 ?>
 
 <div>
-	<h2 class="sub-title"><?php echo $rs->title; ?></h2>
+<!-- 	<h2 class="sub-title"><?php echo $rs->title; ?></h2>
 	<div class="left padding-box" id="map"></div>
 	<div class="right padding-box">
 		<form action="/model/add_place_ok/<?php echo $rs->_id; ?>" method="post">
@@ -16,21 +16,23 @@ $rs = $query->fetch();
 	            <div class="form-group">
 					<input type="file" placeholder="Image Search" class="form-control search-text" name="photo" id="photo" size="25" />
 					<button type="button" name="submit" class="btn btn-primary search-btn" id="photo_search"><i class="fa fa-search" aria-hidden="true"></i></button>
-	            </div>
-	            <div class="result">
+	            </div> -->
+	           <!--  <div class="result">
 	            	<input type="hidden" class="form-control" id="lat" name="lat" readonly required>
 	            	<input type="hidden" class="form-control" id="lng" name="lng" readonly required>
-	            	<input type="text" class="form-control" id="lat_view" name="lat_view" readonly required>
-	            	<input type="text" class="form-control" id="lng_view" name="lng_view" readonly required>
-	            	<input type="text" class="form-control" id="title" name="title" placeholder="방문지 제목" required>
-	            	<textarea name="content" class="form-control" placeholder="방문지 내용을 입력해주세요." required></textarea>
-	            	<input class="btn btn-primary" style="width: 100%;" type="submit" value="방문지 추가">
-	            </div>
-			</div>
+	    -->       <!--   	<input type="text" class="form-control" id="lat_view" name="lat_view" readonly required>
+	            	<input type="text" class="form-control" id="lng_view" name="lng_view" readonly required> -->
+	            <form action="/model/add_place_ok/<?php echo $rs->idx; ?>" method="post">
+	            	<input type="text" class="form-control" id="title" name="title" placeholder="행선지 이름" required>
+	            	<textarea name="content" class="form-control" style="height: 300px;" placeholder="행선지 내용을 입력해주세요." required></textarea>
+	            	<input class="btn btn-primary" style="width: 100%;" type="submit" value="행선지 추가">
+	            </form>
+	            <!-- </div> -->
+			<!-- </div>
 		</form>
 		
-	</div>
+	</div> -->
 </div>
-
+<!-- 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx2KOMuHh3r1caF4MuHJq12zTZq5pVlKw&callback=initMap"
-    async defer></script>
+    async defer></script> -->
