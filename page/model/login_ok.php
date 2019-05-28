@@ -8,6 +8,7 @@ $rs = $res->fetch();
 
 if($rs->user_id) {
 	$_SESSION['user_id'] = $rs->user_id;
+	$_SESSION['user_name'] = $rs->user_name;
 }
 move("/");
 

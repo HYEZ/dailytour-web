@@ -2,7 +2,7 @@ $(function(){
     datepick();
 });
 
-$(".btn-wrap .btn").on("click", function(){
+$(".main-btn-wrap .btn").on("click", function(){
     var id = $(this).attr("data-popup");
     onShowPopup(id);
 });
@@ -116,10 +116,28 @@ $("#photo_search").click(function() {
         success: function(data){
             // console.log(data);
             var t = JSON.parse(data);
-            console.log(t.responses[0].landmarkAnnotations[0].locations[0].latLng);
+            // console.log(t.responses[0].landmarkAnnotations[0].locations[0].latLng);
             initMap(t.responses[0].landmarkAnnotations[0].locations[0].latLng.latitude, t.responses[0].landmarkAnnotations[0].locations[0].latLng.longitude);
 
         }
      });
 });
+
+$("#detail-add-btn").click(function() {
+    showUploadBox(".upload_box_wrap");
+});
+$(".member-toggle").click(function() {
+    showUploadBox(".member_box_wrap");
+});
+// set opacitys toggle event
+function showUploadBox(id) {
+    var box = $(id);
+    if(box.css("display") == "none") {
+        box.fadeIn();
+    } else {
+        box.fadeOut();
+    }
+}
+
+
 

@@ -3,7 +3,7 @@ $file_name = date("YmdHis")."_".$_FILES['file']['name'];
 $file_tmp = $_FILES['file']['tmp_name'];
 $file_arr = array("image/jpeg","image/png","image/bmp","image/gif");
 $file_type = $_FILES['file']['type'];
-$file_rel = "{$_SERVER['DOCUMENT_ROOT']}/file/".iconv("utf-8","euc-kr",$file_name);;
+$file_rel = "{$_SERVER['DOCUMENT_ROOT']}/file/".$file_name;
 
 // foreach ($_FILES["file"]["error"] as $key => $error) {
 //     if ($error == UPLOAD_ERR_OK) {

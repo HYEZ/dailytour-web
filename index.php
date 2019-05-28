@@ -21,7 +21,13 @@
     <link rel="stylesheet" type="text/css" href="/assets/jquery/jquery-ui-1.11.4/jquery-ui.structure.css">
     <link href="/assets/css/default.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 
+     <!-- script -->
+    <script src="/assets/jquery/jquery-1.12.3.min.js"></script>
+    <script src="/assets/jquery/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
 
@@ -41,9 +47,24 @@
                     <a class="navbar-brand2" href="/">Daily Tour</a>
                 </div>
                 <div class="right-align">
-                    <a class="navbar-brand" href="/page/model/logout.php">
+                    <a class="navbar-brand member-toggle">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
+                </div>
+                <div class="member_box_wrap" id="member_box">
+                    <div class="gb_kb2"></div>
+                    <div class="member_box">
+                        <div class="member_box_top">
+                            <div class="member_name_img"><?php echo $_SESSION['user_name']; ?></div>
+                            <div class="member_profile">
+                                <ul>
+                                    <li style="font-weight: bold;"><?php echo $_SESSION['user_name']; ?></li>
+                                    <li><?php echo $_SESSION['user_id']; ?></li>
+                                </ul>
+                                <input type="button" value="로그아웃" class="logout_btn" onclick="location.href='/page/model/logout.php';">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,11 +105,7 @@
         </div>
     </footer>
 
-    <!-- script -->
-    <script src="/assets/jquery/jquery-1.12.3.min.js"></script>
-    <script src="/assets/jquery/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    
     <script src="/assets/js/default.js"></script>
+
 </body>
 </html>

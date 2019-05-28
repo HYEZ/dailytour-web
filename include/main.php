@@ -27,7 +27,7 @@
             </div>
         </section>
 
-        <div class="btn-wrap add-btn-wrap"> 
+        <div class="btn-wrap add-btn-wrap main-btn-wrap"> 
             <button data-popup="#popup-folder" class="btn btn-primary add-btn">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </button>

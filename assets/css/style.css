@@ -281,7 +281,7 @@ footer {
 	height: 70px;
 	background: #fff;
 	margin: 3px 0;
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 .place_list li.place-item:hover {
 	background:  rgba(0, 137, 216, 0.1);
@@ -321,9 +321,198 @@ footer {
 	float: left;
 	height: 100px;
 }
+.side-text {
+	font-style: italic !important;
+	font-weight: 400;
+	font-size: 14px;
+	text-transform: lowercase;
+	margin-left: 15px;
+}
+.detail-content {
+	width: 70%;
+	float: left;
+}
+.detail-content a {
+	margin-left: 10px;
+}
+.detail-box-1 {
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.detail-box-2 {
+	width: 100%;
+	float: left;
+	margin-top: 50px;
+	padding-top: 50px;
+	border-top: 1px dashed #999;
+}
+.detail-img {
+	height: 160px;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+.detail-img img {
+	width: 100%;
+}
+.detail-add-btn {
+	position: absolute;
+	right: 0;
+	top: 20px;
+}
+.upload_box {
+	width: 300px;
+	height: 115px;
+	background: #fff;
+	background: rgba(0,0,0,0.7);
+	box-shadow: 3px 3px 3px rgba(0,0,0,0.05);
+	color: #fff;
+	border-radius: 5px;
+	padding: 15px;
+}
+.upload_box_wrap {
+	position: absolute;
+	right: 0;
+	top: 110px;
+	display: none;
+	z-index: 100;
+}
+.gb_kp {
+    right: 25px;
+    top: -9px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-bottom-color: rgba(0,0,0,0.7);
+    border-style: dashed dashed solid;
+    border-width: 0 8.5px 8.5px;
+    position: absolute;
+}
+.upload_box .btn {
+	width: 100%;
+}
 
+.member_box_wrap {
+	width: 270px;
+	height: 120px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	position: absolute;
+	z-index: 200;
+	top: 50px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+	right: 0;
+	display: none;
+	z-index: 100;
+}
+.member_box_top {
+	width: 100%;
+	float: left;
+	height: 120px;
+	padding: 20px;
+}
+.member_box_bottom {
+	width: 100%;
+	float: left;
+	height: 50px;
+	text-align: right;
+	padding: 0 20px;
+}
+.member_name_img {
+	width: 60px;
+	height: 60px;
+	background: #4f4f4f;
+	color: #fff;
+	border-radius: 70px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 1.8em;
+	float: left;
+	margin-top: 7px;
+}
+.member_profile {
+	float: left;
+	font-size: 13px;
+	margin-left: 20px;
+	line-height: 20px;
+}
+.member_profile > ul > li:nth-child(3) {
+	color: #ccc;
+}
+.member_profile > ul > li:nth-child(3) a {
+	color: #0099cc;
+}
+.member_profile > ul > li:nth-child(3) span {
+	font-weight: bold;
+	color: #0099cc;
+}
+.logout_btn {
+	border: 1px solid #ddd;
+	background: #fff;
+	color: #666;
+	outline: none;
+	font-size: 12px;
+	cursor: pointer;
+}
+.gb_kb2 {
+    right: 0;
+    top: -9px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-bottom-color: #ddd;
+    border-style: dashed dashed solid;
+    border-width: 0 8.5px 8.5px;
+    position: absolute;
+}
 
+.portfolio-link {
+	height: 270px;
+}
+.portfolio-link img {
+	width: 100%;
+	height: 100%;
+}
 
+.popup-image {
+	display:none; 
+	padding:50px 30px 50px 30px; 
+	position:fixed; top:40%; left:50%; 
+	transform:translate(-50%, -50%); 
+	background:#fff; 
+	border-radius:4px; 
+	z-index:1001;
+	background: transparent;
+}
+.popup-image button {
+	position: absolute;
+	top:130px;
+	background: transparent;
+	color: #fff;
+	font-size: 100px;
+	border: none;
+	outline: none;
+}
+.popup-image button:hover {
+	color: #0089d8;
+}
+.popup-image button.prev {
+	left: -50px;
+}
+.popup-image button.next {
+	right: -50px;
+}
+.popup-image img {
+	height: 300px;
+}
 
 
 

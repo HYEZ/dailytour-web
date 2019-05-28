@@ -8,7 +8,7 @@ foreach($_FILES['file']["error"] as $key => $error) {
 	$file_arr = array("image/jpeg","image/png","image/bmp","image/gif");
 	$file_type = $_FILES['file']['type'][$key];
 	$str.= $file_name.",";
-	$file_rel = "{$_SERVER['DOCUMENT_ROOT']}/file/".iconv("utf-8","euc-kr",$file_name);
+	$file_rel = "{$_SERVER['DOCUMENT_ROOT']}/file/".$file_name;
 	if(!in_array($file_type,$file_arr)){
 		alertMove("올바른 파일 형식이 아닙니다.","/view/detail/".$sidx);
 		return false;
