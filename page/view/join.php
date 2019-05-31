@@ -27,8 +27,8 @@
 <body>
 	<div class="container login-container">
 	    <div class="row">
-	        <div class="col-md-4 col-md-offset-4">
-	            <h2 class="login-header">Daily Tour</h2>
+	        <div class="col-md-4 col-md-offset-4" style="margin-top: -100px;">
+	            <h2 class="login-header">혜정트래블러</h2>
 	            <div class="login-panel panel panel-default">
 	                <div class="panel-heading">
 	                    <h3 class="panel-title">JOIN</h3>
@@ -37,7 +37,7 @@
 	                    <form role="form" action="/page/model/join_ok.php" method="post">
 	                        <fieldset>
 	                            <div class="form-group">
-	                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+	                                <input class="form-control" placeholder="ID" name="id" type="text" autofocus>
 	                            </div>
 	                            <div class="form-group">
 	                                <input class="form-control" placeholder="Password" name="password" type="password" value="">

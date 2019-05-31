@@ -1,7 +1,7 @@
 <div class="container login-container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h2 class="login-header">Daily Tour</h2>
+            <h2 class="login-header">혜정트래블러</h2>
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Login</h3>
@@ -10,7 +10,7 @@
                     <form role="form" method="post" action="/page/model/login_ok.php">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                <input class="form-control" placeholder="ID" name="id" type="text" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Password" name="password" type="password" value="">

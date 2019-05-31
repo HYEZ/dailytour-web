@@ -32,10 +32,9 @@
 <body>
 
     <?php 
-    // echo $_SESSION['user_idx'];
     if(isset($_SESSION['user_idx'])) {
-        $query = $db->query("select * from user where idx='$_SESSION[user_idx]'");
-        $rs = $query->fetch();
+        $query = $db->query("select * from user where idx='$_SESSION[user_idx]'"); // 질의 전달. user의 정보
+        $rs = $query->fetch(); //  값을 가지고 온다.
     ?>
     <!-- menu -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -58,11 +57,12 @@
                     <div class="gb_kb2"></div>
                     <div class="member_box">
                         <div class="member_box_top">
-                            <div class="member_name_img"><?php  echo $_SESSION['user_name']; ?></div>
+                            <div class="member_name_img"><?php  echo $rs->nickname; ?></div>
                             <div class="member_profile">
                                 <ul>
-                                    <li style="font-weight: bold;"><?php echo $_SESSION['user_name']; ?></li>
-                                    <li><?php echo $_SESSION['user_id']; ?></li>
+                                    <!-- 가져온 User 값 출력--> 
+                                    <li style="font-weight: bold;"><?php echo $rs->user_name; ?></li>
+                                    <li>ID : <?php echo $_SESSION['user_id']; ?></li>
                                     <li><?php echo $rs->nickname; ?></li>
                                     <li><?php echo $rs->birth; ?></li>
                                     <li><?php echo $rs->phone; ?></li>

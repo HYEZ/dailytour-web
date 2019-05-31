@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="row main-container">
                     <?php
-                    $query = $db->query("select * from travels where user_idx='$_SESSION[user_idx]' order by idx desc");
-                    for($i = 1;$rs = $query -> fetch(); $i++){
+                    $query = $db->query("select * from travels where user_idx='$_SESSION[user_idx]' order by idx desc"); // 질의 전달
+                    for($i = 1;$rs = $query -> fetch(); $i++){ // 값을 가지고옴
                     ?>
                     <div class="col-md-4 col-sm-6 portfolio-item" onclick="location.href='/view/directory/<?php echo $rs->idx; ?>'">
                         <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">

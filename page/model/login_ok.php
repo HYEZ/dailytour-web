@@ -2,8 +2,8 @@
 include "{$_SERVER['DOCUMENT_ROOT']}/include/lib.php";
 
 $pw = md5($_POST['password']);
-$res = $db->query("select * from user where user_id='$_POST[email]' and user_pw='{$pw}'");
-$rs = $res->fetch();
+$res = $db->query("select * from user where user_id='$_POST[id]' and user_pw='{$pw}'"); // 질의 전달
+$rs = $res->fetch(); // 값을 가지고온다.
 
 
 if($rs->user_id) {

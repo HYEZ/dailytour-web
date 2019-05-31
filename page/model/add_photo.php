@@ -1,6 +1,5 @@
 <?php 
-// $query = $db->query("select * from travels where idx='$sidx'");
-// $rs = $query->fetch();
+
 $str = "";
 foreach($_FILES['file']["error"] as $key => $error) {
 	$tmp_name = $_FILES["file"]["tmp_name"][$key];
@@ -19,7 +18,6 @@ foreach($_FILES['file']["error"] as $key => $error) {
 }
 
 	
-// $db->query("update route set image='{$str}' where idx='{$sidx}'");
 
 move("/view/detail/".$sidx);
 
